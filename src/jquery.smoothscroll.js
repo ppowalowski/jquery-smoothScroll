@@ -19,7 +19,8 @@
 		$(window).on('scroll',function(e){
 
 		});
-		$scrollElem.on('click.smoothScroll','a[href*=#]',function(e) {
+		$scrollElem.on('click.smoothScroll','a[href*=#]:not([data-noscroll])',function(e) {
+            if(this)
 			e.preventDefault();
 			// Ensure it's a same-page link
 			var thisPath = filterPath(this.pathname) || locationPath;
