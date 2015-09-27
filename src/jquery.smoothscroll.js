@@ -1,8 +1,8 @@
 /*################
 	Smooth Scroller
 #############*/
+(function(window,$){
 	jQuery(function() {
-
 		function filterPath(string) {
 			return string
 			.replace(/^\//,'')
@@ -66,7 +66,8 @@
 		function scrollableElement(els) {
 			for (var i = 0, argLength = arguments.length; i <argLength; i++) {
 				var el = arguments[i];
-				$scrollElement = $(el);
+                console.log(el);
+				var $scrollElement = $(el);
 				if ($scrollElement.scrollTop() > 0) {
 					return el;
 				} else {
@@ -78,8 +79,7 @@
 					}
 				}
 			}
-//			return [];
 			return $('body');
 		}
-
 	});
+})(window,jQuery);
