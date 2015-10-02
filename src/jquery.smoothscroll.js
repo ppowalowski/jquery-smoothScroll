@@ -10,7 +10,7 @@
 			.replace(/\/$/,'');
 		}
 
-		var locationPath = filterPath(location.pathname);
+		var locationPath = filterPath(location.pathname+location.search);
 		var scrollElem = scrollableElement('html', 'body');
 		var $scrollElem = $(scrollElem);
 		var lastClicked;
@@ -20,10 +20,9 @@
 
 		});
 		$scrollElem.on('click.smoothScroll','a[href*=#]:not([data-noscroll])',function(e) {
-            if(this)
-			e.preventDefault();
 			// Ensure it's a same-page link
-			var thisPath = filterPath(this.pathname) || locationPath;
+            console.log(this.pathname);
+			var thisPath = filterPath(this.pathname+this.search) || locationPath;
 			
 			if (  locationPath == thisPath
 				&& (location.hostname == this.hostname || !this.hostname)
@@ -31,6 +30,7 @@
 					// Ensure target exists
 					var $target = $(this.hash), target = this.hash;
 					if ($target.length) {
+                        e.preventDefault();
 						// Prevent jump-down						
 
 						// Find location of target
