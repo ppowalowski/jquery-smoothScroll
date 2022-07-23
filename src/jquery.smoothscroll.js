@@ -19,9 +19,8 @@
 		$(window).on('scroll',function(e){
 
 		});
-		$scrollElem.on('click.smoothScroll','a[href*=#]:not([data-noscroll])',function(e) {
+		$scrollElem.on('click.smoothScroll',"a[href*='#']:not([data-noscroll])",function(e) {
 			// Ensure it's a same-page link
-            console.log(this.pathname);
 			var thisPath = filterPath(this.pathname+this.search) || locationPath;
 			
 			if (  locationPath == thisPath
@@ -66,7 +65,6 @@
 		function scrollableElement(els) {
 			for (var i = 0, argLength = arguments.length; i <argLength; i++) {
 				var el = arguments[i];
-                console.log(el);
 				var $scrollElement = $(el);
 				if ($scrollElement.scrollTop() > 0) {
 					return el;
